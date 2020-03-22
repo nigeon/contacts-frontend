@@ -1,0 +1,1 @@
+export const getContactState = (state) => state.Contact;
