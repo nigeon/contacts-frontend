@@ -28,9 +28,24 @@ export function* get() {
   });
 }
 
+export function* deleteContact() {
+  yield takeLatest(actions.DELETE_REQUEST, function*({ payload } ){
+    const result = yield call(Api.deleteContact, payload.id);
+
+    if (result.error) {
+      yield put({ type: actions.DELETE_FAILURE, payload: result.error });
+    } else {
+      yield put({ type: actions.DELETE_SUCCESS, payload: result })
+      yield put({ type: actions.LIST_REQUEST });
+    }
+
+  });
+}
+
 export default function* rootSaga() {
   yield all([
     list(),
     get(),
+    deleteContact(),
   ]);
 }

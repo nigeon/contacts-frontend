@@ -14,7 +14,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Octicon, {MarkGithub} from '@primer/octicons-react'
 
-import ContactList from './containers/ContactList';
+import ContactManager from './containers/ContactManager';
 
 function App() {
   return (
@@ -37,8 +37,8 @@ function App() {
         <Row className="justify-content-md-center mt-5">
           <Col xs={12}>
             <Switch>
-              <Route exact path="/">
-                <ContactList />
+              <Route path="/">
+                <ContactManager />
               </Route>
             </Switch>
           </Col>

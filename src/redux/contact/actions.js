@@ -47,7 +47,7 @@ const actions = {
   delete: (id) => {
     return {
       type: actions.DELETE_REQUEST,
-      id,
+      payload: { id },
     };
   },
 };
