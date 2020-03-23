@@ -2,6 +2,9 @@ const actions = {
   RESET_CONTACTS_STATE: 'RESET_CONTACTS_STATE',
   resetContactsState: () => ({ type: actions.RESET_CONTACTS_STATE }),
 
+  CHANGE_MODE: 'CHANGE_MODE',
+  changeMode: (mode) => ({ type: actions.CHANGE_MODE, payload: { mode }}),
+
   LIST_REQUEST: 'LIST_REQUEST',
   LIST_SUCCESS: 'LIST_SUCCESS',
   LIST_FAILURE: 'LIST_FAILURE',
@@ -21,22 +24,12 @@ const actions = {
     };
   },
 
-  CREATE_REQUEST: 'CREATE_REQUEST',
-  CREATE_SUCCESS: 'CREATE_SUCCESS',
-  CREATE_FAILURE: 'CREATE_FAILURE',
-  create: (data, setErrors, setSubmitting) => {
+  CREATEEDIT_REQUEST: 'CREATEEDIT_REQUEST',
+  CREATEEDIT_SUCCESS: 'CREATEEDIT_SUCCESS',
+  CREATEEDIT_FAILURE: 'CREATEEDIT_FAILURE',
+  createEdit: (data, setErrors, setSubmitting) => {
     return {
-      type: actions.CREATE_REQUEST,
-      payload: { data, setErrors, setSubmitting }
-    };
-  },
-
-  UPDATE_REQUEST: 'UPDATE_REQUEST',
-  UPDATE_SUCCESS: 'UPDATE_SUCCESS',
-  UPDATE_FAILURE: 'UPDATE_FAILURE',
-  update: (data, setErrors, setSubmitting) => {
-    return {
-      type: actions.UPDATE_REQUEST,
+      type: actions.CREATEEDIT_REQUEST,
       payload: { data, setErrors, setSubmitting }
     };
   },

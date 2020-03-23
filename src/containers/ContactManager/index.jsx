@@ -3,25 +3,65 @@ import { connect } from 'react-redux';
 
 import contactActions from '../../redux/contact/actions'
 
-import List from './list';
-import Contact from './contact';
+import List from '../../components/ContactManager/list';
+import Contact from '../../components/ContactManager/contact';
+import CreateEdit from '../../components/ContactManager/createedit';
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class ContactManager extends React.Component {
   componentDidMount = () => {
     this.props.dispatch(contactActions.list());
   }
 
-  contactClick = (id) => {
+  listContactClick = (id) => {
     this.props.dispatch(contactActions.get(id));
   }
 
+  changeMode = (mode) => {
+    this.props.dispatch(contactActions.changeMode(mode));
+  }
+
+  handleCreateEdit = (values, actions) => {
+    this.props.dispatch(contactActions.createEdit(values, actions.setErrors, actions.setSubmitting));
+  }
+
+  handleDelete = (id) => {
+    this.props.dispatch(contactActions.delete(id));
+  }
+
   render() {
-    console.log('PROPS', this.props);
+    let contact = this.props.contacts.detail;
+    if(this.props.contacts.mode === 'create'){
+      contact = {};
+    }
 
     return (
       <div>
-        <List contacts={this.props.contacts.list} handleContactClick={this.contactClick} />
-        <Contact contact={this.props.contacts.detail} />
+        <Button onClick={() => this.changeMode('create')}>New contact</Button>
+
+        <Row className="justify-content-md-center">
+          <Col xs={3}>
+            <List contacts={this.props.contacts.list} handleContactClick={this.listContactClick} />
+          </Col>
+          <Col xs={6}>
+            {this.props.contacts.mode === 'detail' && 
+              <Contact 
+                contact={contact}
+                handleDelete={() => this.handleDelete(contact.id)}
+                handleEdit={() => this.changeMode('edit')}
+              />
+            }
+            {(this.props.contacts.mode === 'create' || this.props.contacts.mode === 'edit') &&
+              <CreateEdit 
+                contact={contact} 
+                handleSubmit={this.handleCreateEdit} 
+              />
+            }
+          </Col>
+        </Row>
       </div>
     );
   }

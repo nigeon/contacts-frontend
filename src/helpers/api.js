@@ -25,14 +25,12 @@ class Api {
       }
     }
 
-    return await fetch(endpoint, options)
-      .then(response => {
-        if(response.status !== 200){
-          return { error: response };
-        }
-        return response.json();
-      })
-      .catch(error => ({ error }));
+    let response = await fetch(endpoint, options);
+    try { 
+      return response.json();
+    } catch(error) {
+      return { error };
+    } 
   }
 
   listContacts = async () => {
@@ -44,7 +42,7 @@ class Api {
   };
 
   createContact = async (data) => {
-    return await this.executeCall('GET', `${apiConfig.host}/contacts`, data);
+    return await this.executeCall('POST', `${apiConfig.host}/contacts`, data);
   };
 
   updateContact = async (id, data) => {
@@ -54,6 +52,20 @@ class Api {
   deleteContact = async (id) => {
     return await this.executeCall('DELETE', `${apiConfig.host}/contacts/${id}`);
   };
+
+  apiErrorsToFormik = (errors) => {
+    let formErrors = {}
+    errors.data.forEach((v, i) => {
+      let e = '';
+      Object.keys(v.constraints).forEach((c) => {
+        e += v.constraints[c];
+      });
+  
+      formErrors[v.field] = e;
+    });
+  
+    return formErrors;
+  }
 }
 
 export default new Api();
