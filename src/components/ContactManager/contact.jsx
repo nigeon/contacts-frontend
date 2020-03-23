@@ -1,5 +1,6 @@
 import React from "react";
 
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
 export default class Contact extends React.Component {
@@ -7,7 +8,7 @@ export default class Contact extends React.Component {
     const contact = this.props.contact;
 
     return (
-      <div>
+      <div className="detail">
         { contact && (Object.keys(contact).length > 0)  && 
             <div>
               <dl>
@@ -27,8 +28,10 @@ export default class Contact extends React.Component {
                 <dd>{ contact.updatedAt }</dd>
               </dl>
 
-              <Button onClick={this.props.handleEdit}>Edit</Button>
-              <Button onClick={this.props.handleDelete} variant="danger">Delete</Button>
+              <ButtonGroup>
+                <Button onClick={this.props.handleEdit} variant="outline-info">Edit</Button>
+                <Button onClick={this.props.handleDelete} variant="outline-danger">Delete</Button>
+              </ButtonGroup>
             </div>
           }
       </div>

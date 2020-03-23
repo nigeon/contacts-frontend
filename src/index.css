@@ -5,9 +5,82 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f2f4f5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.contact-manager{
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.05);
+}
+
+  .contact-manager .head{
+    background-color: #7c73e6;
+    border-radius: 5px 5px 0 0;
+    padding: 17px;
+  }
+
+  .contact-manager .main{
+    height:570px;
+  }
+
+  .contact-manager .contact-list{
+    border:1px solid #dfe3e6;
+    border-right: 0;
+    border-bottom: 0;
+    height: 570px;
+    overflow-y: scroll;
+  }
+
+    .contact-manager .contact-list ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+      .contact-manager .contact-list ul li{
+        padding: 20px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-bottom:1px solid #dfe3e6;
+        cursor: pointer;
+      } 
+
+
+      .contact-manager .contact-list ul li:last-child{
+        border-bottom:none;
+      }
+
+      .contact-manager .contact-list ul li:hover{
+        background-color: #f3f2f9;
+      }
+
+  .contact-manager .viewer{
+    background-color: #f3f2f9;
+    border-left: 1px solid #dfe3e6;
+    padding:50px;
+    font-size: 18px;
+    height: 570px;
+  }
+
+  .contact-manager .viewer dl{
+    overflow: hidden;
+  }
+
+    .contact-manager .viewer dt,.contact-manager .viewer dd{
+      float:left;
+    }
+
+    .contact-manager .viewer dt{
+      clear:both;
+      margin-right:5px;
+    }

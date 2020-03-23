@@ -9,6 +9,7 @@ import CreateEdit from '../../components/ContactManager/createedit';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 
 class ContactManager extends React.Component {
@@ -39,27 +40,36 @@ class ContactManager extends React.Component {
     }
 
     return (
-      <div>
-        <Button onClick={() => this.changeMode('create')}>New contact</Button>
+      <div className="contact-manager">
+        <Row>
+          <Col xs={12}>
+            <Nav className="justify-content-end head">
+              <Button variant="outline-light" onClick={() => this.changeMode('create')}>New contact</Button>
+            </Nav>
+          </Col>
+        </Row>
+        
 
-        <Row className="justify-content-md-center">
-          <Col xs={3}>
+        <Row noGutters className="justify-content-md-center main">
+          <Col xs={4}>
             <List contacts={this.props.contacts.list} handleContactClick={this.listContactClick} />
           </Col>
-          <Col xs={6}>
-            {this.props.contacts.mode === 'detail' && 
-              <Contact 
-                contact={contact}
-                handleDelete={() => this.handleDelete(contact.id)}
-                handleEdit={() => this.changeMode('edit')}
-              />
-            }
-            {(this.props.contacts.mode === 'create' || this.props.contacts.mode === 'edit') &&
-              <CreateEdit 
-                contact={contact} 
-                handleSubmit={this.handleCreateEdit} 
-              />
-            }
+          <Col xs={8}>
+            <div className="viewer">
+              {this.props.contacts.mode === 'detail' && 
+                <Contact 
+                  contact={contact}
+                  handleDelete={() => this.handleDelete(contact.id)}
+                  handleEdit={() => this.changeMode('edit')}
+                />
+              }
+              {(this.props.contacts.mode === 'create' || this.props.contacts.mode === 'edit') &&
+                <CreateEdit 
+                  contact={contact} 
+                  handleSubmit={this.handleCreateEdit} 
+                />
+              }
+            </div>
           </Col>
         </Row>
       </div>

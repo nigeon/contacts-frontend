@@ -6,7 +6,7 @@ export default class List extends React.Component {
     const contacts = this.props.contacts;
 
     return (
-      <div>
+      <div className="contact-list">
         { contacts && contacts.length > 0 &&
           <ul>
             { contacts.map((v) => (
