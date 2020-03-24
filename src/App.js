@@ -34,7 +34,7 @@ function App() {
       </header>
       
       <Container>
-        <Row className="justify-content-md-center mt-5">
+        <Row className="justify-content-md-center mt-5 mb-5">
           <Col xs={12}>
             <Switch>
               <Route path="/:param?" component={ContactManager} />
