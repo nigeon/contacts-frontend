@@ -44,7 +44,6 @@ code {
     }
 
       .contact-manager .contact-list ul li{
-        padding: 20px;
         font-weight: 500;
         font-size: 20px;
         line-height: 25px;
@@ -52,8 +51,18 @@ code {
         text-overflow: ellipsis;
         white-space: nowrap;
         border-bottom:1px solid #dfe3e6;
-        cursor: pointer;
       } 
+
+        .contact-manager .contact-list ul li a{
+          padding: 20px;
+          display: block;
+          color: #212529;
+        }
+
+        .contact-manager .contact-list ul li a:hover{
+          text-decoration: none;
+          color: black;
+        }
 
 
       .contact-manager .contact-list ul li:last-child{

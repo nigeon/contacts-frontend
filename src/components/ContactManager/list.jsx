@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 export default class List extends React.Component {
 
   render() {
@@ -11,7 +13,7 @@ export default class List extends React.Component {
           <ul>
             { contacts.map((v) => (
               <li key={v.id} onClick={() => this.props.handleContactClick(v.id)}>
-                { v.firstname } { v.lastname }
+                <Link to={ v.id }>{ v.firstname } { v.lastname }</Link>
               </li>
             )) }
           </ul>

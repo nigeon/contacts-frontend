@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 
+import { Link } from "react-router-dom";
+
 import contactActions from '../../redux/contact/actions'
 
 import List from '../../components/ContactManager/list';
@@ -14,7 +16,23 @@ import Button from 'react-bootstrap/Button';
 
 class ContactManager extends React.Component {
   componentDidMount = () => {
+    const { param } = this.props.match.params;
+    this.route(param);
     this.props.dispatch(contactActions.list());
+  }
+
+  route = (param) => {
+    switch(param){
+      case 'create':
+        this.changeMode('create');
+        break;
+      case undefined:
+        break;
+      default:
+        this.listContactClick(param);
+        break;
+
+    }
   }
 
   listContactClick = (id) => {
@@ -44,7 +62,7 @@ class ContactManager extends React.Component {
         <Row>
           <Col xs={12}>
             <Nav className="justify-content-end head">
-              <Button variant="outline-light" onClick={() => this.changeMode('create')}>New contact</Button>
+              <Link to="/create"><Button variant="outline-light" onClick={() => this.changeMode('create')}>New contact</Button></Link>
             </Nav>
           </Col>
         </Row>

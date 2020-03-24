@@ -37,9 +37,7 @@ function App() {
         <Row className="justify-content-md-center mt-5">
           <Col xs={12}>
             <Switch>
-              <Route path="/">
-                <ContactManager />
-              </Route>
+              <Route path="/:param?" component={ContactManager} />
             </Switch>
           </Col>
         </Row>
