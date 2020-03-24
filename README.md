@@ -1,3 +1,11 @@
+# Specification #1 Test:
+"We want a React + Backend application that allows you to create, read, update and delete a list of contacts. Each contact will have: First name, Last name, Email, and phone number. All the fields are mandatory and there can’t be two contacts with the same email. The contacts will be persisted in the database."
+
+- Backend endpoint hardcoded as 'http://localhost:1337' at /src/helpers/api.js
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
