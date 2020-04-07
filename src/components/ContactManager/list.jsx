@@ -13,7 +13,7 @@ export default class List extends React.Component {
           <ul>
             { contacts.map((v) => (
               <li key={v.id} onClick={() => this.props.handleContactClick(v.id)}>
-                <Link to={ v.id }>{ v.firstname } { v.lastname }</Link>
+                <Link to={ v.id.toString() }>{ v.firstname } { v.lastname }</Link>
               </li>
             )) }
           </ul>
