@@ -34,11 +34,11 @@ class Api {
   }
 
   listContacts = async () => {
-    return await this.executeCall('GET', `${apiConfig.host}/contacts`);
+    return await this.executeCall('GET', `${apiConfig.host}/contacts.json`);
   };
 
   getContact = async (id) => {
-    return await this.executeCall('GET', `${apiConfig.host}/contacts/${id}`);
+    return await this.executeCall('GET', `${apiConfig.host}/contacts/${id}.json`);
   };
 
   createContact = async (data) => {
